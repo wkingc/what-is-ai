@@ -1,0 +1,402 @@
+---
+title: "What is AI?"
+author: Wade Copeland and Emily Chapman-McQuiston
+date: "`r format(as.POSIXlt(Sys.time(), tz = 'America/New_York'), '%d %B, %Y')`"
+output: 
+    beamer_presentation:
+        theme: "Malmoe"
+        colortheme: "default"
+        slide_level: 1
+        toc: false
+        includes:
+            in_header: header.tex
+bibliography: ./references.bib
+csl: ./csl/apa-numeric-superscript-brackets.csl
+---
+
+# Defintions of AI Word Cloud
+
+<!--
+- Beamer in R markdown:  https://bookdown.org/yihui/rmarkdown/beamer-presentation.html
+- Beamer Theme Matrix:  https://mpetroff.net/files/beamer-theme-matrix/
+
+John Gartland Feedback:
+- Need a slide on why an IG should care.
+  - This is part of a larger conversation.
+- For Corgie picture mention I did this on my local computer.
+- Create my own improper payment data using simulation and see if generative AI can do the same from prompts.
+-->
+
+```{r options, eval = TRUE, echo = FALSE}
+# Create a chunk option for setting the size of code.
+def.chunk.hook  <- knitr::knit_hooks$get("chunk")
+knitr::knit_hooks$set(chunk = function(x, options) {
+    x <- def.chunk.hook(x, options)
+    ifelse(options$size != "normalsize", paste0("\n \\", options$size,"\n\n", x, "\n\n \\normalsize"), x)
+})
+```
+
+- We did an internet search of "What is AI?" and compiled the definitions from the first 16 results into the word cloud below.
+
+```{r ai_def_word_cloud, echo = FALSE, dpi = 350, fig.align = "center"}
+py_run_file("./ai_def_word_cloud.py")
+
+knitr::include_graphics("./images/ai_def_word_cloud.png")
+```
+
+<!--
+There three words that appear the most in the collective definitions:  human, computer, machine.
+-->
+
+# AI According to Technology Companies
+
+- Google:  Artificial intelligence is a field of science concerned with building computers and machines that can reason, learn, and act in such a way that would normally require human intelligence or that involves data whose scale exceeds what humans can analyze @googleDef.
+
+- IBM: Artificial intelligence is technology that enables computers and machines to simulate human intelligence and problem-solving capabilities @ibmDef.
+
+- SAS:  Artificial intelligence makes it possible for machines to learn from experience, adjust to new inputs and perform human-like tasks @sasDef.
+
+<!-- 
+The Google definition calls AI a science while the IBM definition refers to it as a technology.
+-->
+
+# AI According to AI
+
+- ChatGPT:  Artificial Intelligence refers to the simulation of human intelligence in machines that are programmed to think, learn, and problem-solve like a human @chatgpt. 
+
+- Copilot:  Artificial Intelligence refers to technology that enables computers and machines to simulate human intelligence and problem-solving capabilities @copilot.
+
+- Gemini:  Artificial Intelligence is the field of computer science focused on creating intelligent agents, which are systems that can perceive their environment, learn, reason, and take actions to achieve specific goals.  In essence, it's about building machines that can mimic human intelligence @gemini.
+
+<!-- 
+Similar to the previous slide, the Google LLM refers to AI as a science while the Microsoft offering defines it as a technology.
+-->
+
+# AI According to Executive Order
+
+- The term “artificial intelligence” or “AI” has the meaning set forth in 15 U.S.C. 9401(3):  a machine-based system that can, for a given set of human-defined objectives, make predictions, recommendations, or decisions influencing real or virtual environments.  Artificial intelligence systems use machine- and human-based inputs to perceive real and virtual environments; abstract such perceptions into models through analysis in an automated manner; and use model inference to formulate options for information or action @whitehouse.
+
+- The term “AI model” means a component of an information system that implements AI technology and uses computational, statistical, or machine-learning techniques to produce outputs from a given set of inputs @whitehouse.
+
+<!--
+- All of the previous definitions defined AI as machines mimicking humans.  The Executive Order defines AI in terms of it's outcomes:  Predictions, recommendations, or decisions.   This means an AI Model is not necessarily AI according to this definition.
+
+- Google and Gemini refer to AI as a science while IBM, SAS, ChatGPT, and Copilot view AI as a technology.  The Executive Order definition says AI is a technology but clarifies that it's implemented using methods established in computational and statistical science.
+
+- The definition of AI model from the Executive Order suggests that \textit{any} statistical model is an AI model, regardless of whether it's used for prediction or inference.
+
+- Prediction vs. inference:  Inference is estimating the mean value of stock today, prediction is estimating the mean value of a stock tomorrow.  I think I am safe in saying most statisticians would not call a statistical model used for inference AI.
+-->
+
+# History of AI
+
+:::: {.columns}
+
+::: {.column width="35%"}
+- In the popular zeitgeist AI is closely associated with Generative AI such as ChatGPT, but that is just a small subset of the AI that exists.
+:::
+
+::: {.column width="65%"}
+```{r ai, echo = FALSE, out.height = "80%", out.width = "80%", fig.align = "center", results = 'asis'}
+knitr::include_graphics("./images/ai_image_2.jpg", auto_pdf = TRUE)
+```
+:::
+
+:::: 
+
+# History of AI:  Symbolic AI I
+
+- The study of AI began in 1956 with early computer scientist John McCarthy, who said of  the study the following @chollet2021deep:
+
+\begin{quoting}
+This study is to proceed on the basis of the conjecture that every aspect of learning or any other feature of intelligence can in principle be so precisely described that a machine can be made to simulated it.
+\end{quoting}
+
+- This vision of AI is called "Symbolic AI" because it assumes that all decision making processes, regardless of complexity, can be modeled using mathematical logic.
+
+# History of AI:  Symbolic AI II
+
+- John McCarthy's thoughts about symbolic AI were later epitomized in the so-called Expert Systems of the 1980s.  These AI attempted to mimic the decision-making process of human experts by encoding their knowledge as rules for computers to follow @mattartz.
+- Symbolic AI takes in rules and data and outputs answers @chollet2021deep. 
+
+```{r symbolic_ai, echo = FALSE, dpi = 250, fig.align = "center"}
+knitr::include_graphics("./images/symbolic_ai.png")
+```
+
+<!-- 
+- Example:  Medical diagnosis systems make recommendations to doctors based on patient symptoms.
+
+Rules:  Pathologies mapped to diseases.
+Data:  Patient symptoms.
+Learner:  Explicit programming.
+Output:  Expected diagnosis.
+-->
+
+# History of AI:  Machine Learning
+
+- Following the advent of faster hardware and less expensive computing, the 1990s saw the birth of Machine Learning, and to this day these models make up most of the AI in the wild @chollet2021deep.
+- While Symbolic AI produces answers using deterministic rules, Machine learning takes in data and answers and produces rules @chollet2021deep.
+
+```{r ml, echo = FALSE, dpi = 250, fig.align = "center"}
+knitr::include_graphics("./images/machine_learning.png")
+```
+
+<!--
+This means Machine Learning AI are trained rather than explicitly programmed @chollet2021deep.
+
+Example:  A camera that detects stop signs on the road.
+
+Data:  Images with and without stop signs.
+Answers:  Whether each image contains a stop sign.
+Learner:  Machine learning model.
+Output:  Learned rules that can be used to predict if some future image contains a stop sign.
+
+The Symbolic AI approach to this same problem would result in a hierarchy of rules for every different kind of image.  The number of rules would be rapidly make classification of this type intractable.
+-->
+
+# History of AI:  Deep Learning I
+
+- The basic theoretical framework for Neural Networks has existed since the 1950s,  however, the methodology received little attention until it was successfully applied in 1989 at Bell Labs to automate the reading of ZIP codes on mail envelopes @chollet2021deep.
+- Around 2010 advancements in data, hardware, and algorithms led to Deep Neural Networks, that is a Machine Learning model that learns increasingly meaningful data representations by Neural Networks @chollet2021deep.
+- Deep Neural Networks gained prominence in 2012 after they were used to \textit{solve} with a high degree of accuracy many academic image classification contests @chollet2021deep.
+
+<!--
+By solved I don't mean Deep Neural Networks were as good as any other method; I mean they were so good that the competitions stopped being run because they were 95%+ accurate.
+
+If you are ever reading a popular science article about deep learning, there will likely be a picture of a brain with a bunch of interconnected nodes.  This is misleading because it suggest learning by Deep Neural Networks mimics human learning, however there is no scientific evidence to support the claim.
+-->
+
+# History of AI:  Deep Learning II
+
+- Most Machine Learning methods assume that there is a single representation of the data that will get us as close as possible to the expected output @chollet2021deep.
+
+<!-- 
+For example, using observed data to construct a best-fit line (what statisticians call ordinary least-squares regression).
+-->
+
+- Deep Learning uses many successive representations of the data to create depth.  These layered representations of the data are learned via models called Neural Networks @chollet2021deep.
+
+<!-- 
+The upshot of this process is that the tedious step of feature engineering is completely automated by Deep Learning @chollet2021deep.
+-->
+
+# History of AI:  Deep Learning III
+
+- A Deep Neural Network can be thought of as a information-distillation process where data goes through successive filters and comes out increasingly purified, meaning that each subsequent layer is better than the next at predicting the outcome  @chollet2021deep.
+
+```{r dl, echo = FALSE, dpi = 350, fig.align = "center"}
+knitr::include_graphics("./images/deep_learning_2.png")
+```
+
+<!-- 
+This is a simple example of a Neural Network.  The depth is the number of layers which are representations of the input data @chollet2021deep.  The goal of the Deep Neural Network is to jointly learn the value of the weights for each layer that will result in the best prediction accuracy @chollet2021deep. 
+-->
+
+# History of AI:  Generative AI
+
+* Generative AI has existed since 2015 but didn't gain national attention until November 20, 2022 with the release of OpenAI's ChatGPT @chollet2021deep.  
+* Generative AI simulates creative tasks with new written, visual, and auditory content @chollet2021deep.
+
+```{r genai, echo = FALSE, dpi = 400, fig.align = "center"}
+knitr::include_graphics("./images/generative_ai.png")
+```
+
+<!-- 
+Because Generative AI can write papers, computer programs, and create art, the popular perception is that it will replace humans doing the same tasks.
+
+While some jobs will be replaced by Generative AI, the majority of knowledge-based and technical jobs will use Generative AI to enhance their productivity.
+
+For example, as a statistician I write a lot of code so I might be worried that Generative AI that can write code will replace me.  However, I see it as an incredible boon to my productivity because it's much faster to have an AI write the shell of what I want to do then for me to write a program from scratch.
+
+As another example, I have a friend who works in HR, and he told me that he uses Generative AI to write his job descriptions and then goes in and edits them afterword, making the process of posting jobs much faster.
+
+In other words, for most of us Generative AI will augment our intelligence, not replace it.  The only distinguishing characteristic will be those who embrace Generative AI and those who choose not to, and the latter will be less productive than the former.
+-->
+
+# Example:  Dog Breed Classifier I
+
+The following AI from Hugging Face takes an image of a dog and classifies its breed [@dogbreedclassifier]:
+
+```{r einOriginal, echo = FALSE, out.height = "70%", out.width = "70%", fig.align = "center"}
+knitr::include_graphics("./images/ein_original.jpeg")
+```
+
+<!--
+This is my own Corgie named Ein dressed up as Sherlock Holmes!
+-->
+
+# Example:  Dog Breed Classifier II
+
+```{python dogBreedCode, echo = TRUE, eval = FALSE, size = "scriptsize"}
+from transformers import (
+    AutoImageProcessor, AutoModelForImageClassification)
+import PIL
+import requests
+
+image_processor = AutoImageProcessor.from_pretrained(
+    "wesleyacheng/dog-breeds-multiclass-image-classification-with-vit")
+model = AutoModelForImageClassification.from_pretrained(
+    "wesleyacheng/dog-breeds-multiclass-image-classification-with-vit")
+
+image = PIL.Image.open("./images/ein_original.jpeg")
+inputs = image_processor(images=image, return_tensors="pt")
+
+outputs = model(**inputs)
+logits = outputs.logits
+
+predicted_class_idx = logits.argmax(-1).item()
+print("Predicted class:", model.config.id2label[predicted_class_idx])
+```
+
+* Predicted class:  pembroke
+
+<!-- 
+If I take out the extra line breaks, this is only 11 lines of code!
+-->
+
+# Example:  AI Image Generation I
+
+The following AI from Hugging Face takes a prompt and outputs an image [@aiimage]: \newline
+
+```{python corgieAI, echo = TRUE, eval = FALSE, size = "scriptsize"}
+import torch
+from diffusers import FluxPipeline
+
+pipe = FluxPipeline.from_pretrained(
+    "black-forest-labs/FLUX.1-dev", 
+    torch_dtype=torch.bfloat16)
+
+prompt = "A corgie in a sherlock holmes costume"
+image = pipe(
+    prompt,
+    height=600,
+    width=600,
+    guidance_scale=3.5,
+    num_inference_steps=50,
+    max_sequence_length=512,
+    generator=torch.Generator("cpu").manual_seed(0)
+).images[0]
+image.save("./images/sherlock_corgie.png”)
+```
+
+<!-- 
+If I take out the extra line breaks, this is six lines of code!
+
+I did this on a macbook air without any fancy hardware, from a model and code I dounloaded from the internet.  All I needed was about 8 hours.
+-->
+
+# Example:  AI Image Generation II
+
+```{r einAI, echo = FALSE, out.height = "80%", out.width = "80%", fig.align = "center"}
+knitr::include_graphics("./images/sherlock_corgie.png")
+```
+
+# Example:  AI or Not AI : Automatic Door
+
+<!-- 
+Is this AI?  an automatic door?
+
+Likely not, a simple motion sensor and rules that tell the door to open.
+-->
+
+
+```{r autodoor, echo = FALSE, out.height = "80%", out.width = "80%", fig.align = "right"}
+knitr::include_graphics("./images/automaticDoor.png")
+```
+
+# Example:  AI or Not AI : Personal Coupons
+
+<!-- 
+Is this AI?  A Coupon dispenser at a pharmacy
+
+Likely yes!  It depends if its personalized to your shopping habits then yes a model is scoring your likelihood to use certain coupons based on past shopping habits.  If it sends the same coupon to everyone based on day then no.
+-->
+
+```{r coupons, echo = FALSE, out.height = "80%", out.width = "80%", fig.align = "left"}
+knitr::include_graphics("./images/coupons.png")
+```
+
+# Example:  AI or Not AI : Credit Scores and Credit Card Application Acceptance
+
+<!-- 
+Is this AI?  Your credit score or a loan application.
+
+Yes!  This is one of the oldest uses of predictive AI, a model (trained on historical data of similar people with similar qualities) determines the likelihood of you to pay back debt.
+-->
+
+
+```{r credit, echo = FALSE, out.height = "80%", out.width = "90%", fig.align = "left"}
+knitr::include_graphics("./images/creditscore_loan.png")
+```
+
+# Example:  AI or Not AI : Language Translation Software
+
+<!-- 
+Is this AI?  Language translation software.
+
+Yes!  Models have been built based on previously translated texts to determine the best translations of words
+-->
+
+```{r translate, echo = FALSE, out.height = "80%", out.width = "100%", fig.align = "right"}
+knitr::include_graphics("./images/translate.png")
+```
+
+# Example:  AI or Not AI : Language Translation Software (Before 2016)
+
+<!-- 
+Is this AI?  Language translation software.
+
+Before 2016 google translate was not built on trained data, it was built on a massive set of rules defined by humans (Symbolic AI).  There were huge advances in this technology and trained AI algorithms replaced the rules in 2016 even though the interface itself did not change.
+-->
+
+```{r translate2016, echo = FALSE, out.height = "80%", out.width = "100%", fig.align = "right"}
+knitr::include_graphics("./images/translate.png")
+```
+
+# Example:  AI or Not AI : Spell/Grammar Check
+<!-- 
+Is this AI?  Spell check in emails/Microsoft Word etc.
+
+Yes!  Language models are used in this use case too.
+-->
+
+```{r spell, echo = FALSE, out.height = "80%", out.width = "100%", fig.align = "right"}
+knitr::include_graphics("./images/spellcheck.png")
+```
+
+# Example:  AI or Not AI : Spell/Grammar Check (Before 2016)
+
+<!-- 
+Is this AI?  Spell check in emails/Microsoft Word etc. before 2016
+
+Same thing as translation software, the interface stayed the same and the algorithm changed from Symbolic AI to ML.
+-->
+
+```{r spell2016, echo = FALSE, out.height = "80%", out.width = "100%", fig.align = "right"}
+knitr::include_graphics("./images/spellcheck.png")
+```
+
+# Example:  AI or Not AI : Voice Activated Personal Home Assistants
+
+<!-- 
+Is this AI?  Personal home assistants (google home, Sire, Alexa etc.)
+
+Yes this is known AI and it also has faded into the background as a usage we accept in our daily lives.
+-->
+
+```{r dot, echo = FALSE, out.height = "80%", out.width = "100%", fig.align = "left"}
+knitr::include_graphics("./images/echodot.png")
+```
+
+# Where do I find AI?
+
+- Hugging Face (https://huggingface.co) is a large machine learning community with many data sets and publicly available AI models.
+- kaggle (https://www.kaggle.com) is famous for it's competitions but also provides data and publicly available AI models.
+- TensorFlow Hub (https://www.tensorflow.org/hub) and PyTorch Hub (https://pytorch.org/hub/) both provide many pre-trained AI models that take advantage of their well established Python Machine Learning APIs.
+- You can buy it!
+
+<!-- 
+Economies of scale mean that it might be cheaper to buy an AI than build it yourself.
+-->
+
+# References {.allowframebreaks}
