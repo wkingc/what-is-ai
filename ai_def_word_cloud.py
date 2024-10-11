@@ -12,9 +12,9 @@ def clean_text(text):
     # Remove special characters from the text string.
     text = text.lower()
     text = re.sub(pattern = "-", repl = " ", string = text)
-    text = re.sub(pattern = "\?", repl = " ", string = text)
+    text = re.sub(pattern = "\\?", repl = " ", string = text)
     text = re.sub(pattern = "[^a-z A-Z 0-9]", repl = "", string = text)    
-
+    
     # Tokenize the text string.
     text = nltk.word_tokenize(text)
     
@@ -25,14 +25,14 @@ def clean_text(text):
     stop_words = set(stop_words)
     
     text = [word for word in text if word not in stop_words]
-
+    
     # Lemmatize the text.
     wnl = nltk.WordNetLemmatizer()
     text = [wnl.lemmatize(word) for word in text]
     
     # Create the cleaned text string.
     text = " ".join(text)
-
+    
     return(text)
 
 import pandas as pd

@@ -2,3 +2,4 @@ pyenv
 .DS_store
 .Rhistory
 .vscode
+.Rproj.user
