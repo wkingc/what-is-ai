@@ -19,12 +19,6 @@ csl: ./csl/apa-numeric-superscript-brackets.csl
 <!--
 - Beamer in R markdown:  https://bookdown.org/yihui/rmarkdown/beamer-presentation.html
 - Beamer Theme Matrix:  https://mpetroff.net/files/beamer-theme-matrix/
-
-John Gartland Feedback:
-- Need a slide on why an IG should care.
-  - This is part of a larger conversation.
-- For Corgie picture mention I did this on my local computer.
-- Create my own improper payment data using simulation and see if generative AI can do the same from prompts.
 -->
 
 ```{r options, eval = TRUE, echo = FALSE}
