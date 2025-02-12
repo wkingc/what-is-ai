@@ -29,8 +29,7 @@ knitr::knit_hooks$set(chunk = function(x, options) {
     ifelse(options$size != "normalsize", paste0("\n \\", options$size,"\n\n", x, "\n\n \\normalsize"), x)
 })
 ```
-
-- We did an internet search of "What is AI?" and compiled the definitions from the first 16 results into the word cloud below.
+We did an internet search of "What is AI?" and compiled the definitions from the first 16 results into the word cloud below.
 
 ```{r ai_def_word_cloud, echo = FALSE, dpi = 350, fig.align = "center"}
 py_run_file("./ai_def_word_cloud.py")
@@ -73,11 +72,11 @@ Similar to the previous slide, the Google LLM refers to AI as a science while th
 - The term “AI model” means a component of an information system that implements AI technology and uses computational, statistical, or machine-learning techniques to produce outputs from a given set of inputs @whitehouse.
 
 <!--
-- All of the previous definitions defined AI as machines mimicking humans.  The Executive Order defines AI in terms of it's outcomes:  Predictions, recommendations, or decisions.   This means an AI Model is not necessarily AI according to this definition.
+- All of the previous definitions defined AI as machines mimicking humans.  The Executive Order defines AI in terms of it's outcomes:  Predictions, recommendations, or decisions.
 
 - Google and Gemini refer to AI as a science while IBM, SAS, ChatGPT, and Copilot view AI as a technology.  The Executive Order definition says AI is a technology but clarifies that it's implemented using methods established in computational and statistical science.
 
-- The definition of AI model from the Executive Order suggests that \textit{any} statistical model is an AI model, regardless of whether it's used for prediction or inference.
+- The definition of AI model from the Executive Order suggests to me that \textit{any} statistical model is an AI model, regardless of whether it's used for prediction or inference.
 
 - Prediction vs. inference:  Inference is estimating the mean value of stock today, prediction is estimating the mean value of a stock tomorrow.  I think I am safe in saying most statisticians would not call a statistical model used for inference AI.
 -->
@@ -118,7 +117,7 @@ knitr::include_graphics("./images/symbolic_ai.png")
 ```
 
 <!-- 
-- Example:  Medical diagnosis systems make recommendations to doctors based on patient symptoms.
+Example:  Medical diagnosis systems make recommendations to doctors based on patient symptoms.
 
 Rules:  Pathologies mapped to diseases.
 Data:  Patient symptoms.
@@ -145,7 +144,7 @@ Answers:  Whether each image contains a stop sign.
 Learner:  Machine learning model.
 Output:  Learned rules that can be used to predict if some future image contains a stop sign.
 
-The Symbolic AI approach to this same problem would result in a hierarchy of rules for every different kind of image.  The number of rules would be rapidly make classification of this type intractable.
+The Symbolic AI approach to this same problem would result in a hierarchy of rules for every different kind of image.  The number of rules would be rapidly make classification of this type intractable, and also likely less robust because every potential edge case is hard to explicitly program but easier to learn.
 -->
 
 # History of AI:  Deep Learning I
@@ -156,8 +155,10 @@ The Symbolic AI approach to this same problem would result in a hierarchy of rul
 
 <!--
 By solved I don't mean Deep Neural Networks were as good as any other method; I mean they were so good that the competitions stopped being run because they were 95%+ accurate.
+-->
 
-If you are ever reading a popular science article about deep learning, there will likely be a picture of a brain with a bunch of interconnected nodes.  This is misleading because it suggest learning by Deep Neural Networks mimics human learning, however there is no scientific evidence to support the claim.
+<!--
+If you are ever reading a popular science article about deep learning, there will likely be a picture of a brain with a bunch of interconnected nodes.  This is misleading because it suggest learning by Deep Neural Networks mimics human learning, however there is no scientific evidence to support the claim.  This points to a challenge we all have to be aware of:  There is a lot of promise in AI programming with Neural networks, and because of that, there are a lot of snake oil salesmen who will over promise and under deliver.
 -->
 
 # History of AI:  Deep Learning II
@@ -165,7 +166,7 @@ If you are ever reading a popular science article about deep learning, there wil
 - Most Machine Learning methods assume that there is a single representation of the data that will get us as close as possible to the expected output @chollet2021deep.
 
 <!-- 
-For example, using observed data to construct a best-fit line (what statisticians call ordinary least-squares regression).
+For example, using observed data to construct a best-fit line.
 -->
 
 - Deep Learning uses many successive representations of the data to create depth.  These layered representations of the data are learned via models called Neural Networks @chollet2021deep.
@@ -196,15 +197,15 @@ knitr::include_graphics("./images/generative_ai.png")
 ```
 
 <!-- 
-Because Generative AI can write papers, computer programs, and create art, the popular perception is that it will replace humans doing the same tasks.
+- Because Generative AI can write papers, computer programs, and create art, the popular perception is that it will replace humans doing the same tasks.
 
-While some jobs will be replaced by Generative AI, the majority of knowledge-based and technical jobs will use Generative AI to enhance their productivity.
+- While some jobs will be replaced by Generative AI, the majority of knowledge-based and technical jobs will use Generative AI to enhance their productivity.
 
-For example, as a statistician I write a lot of code so I might be worried that Generative AI that can write code will replace me.  However, I see it as an incredible boon to my productivity because it's much faster to have an AI write the shell of what I want to do then for me to write a program from scratch.
+- For example, as a statistician I write a lot of code so I might be worried that Generative AI that can write code will replace me.  However, I see it as an incredible boon to my productivity because it's much faster to have an AI write the shell of what I want to do even if it isn't perfect, then for me to write a program from scratch.
 
-As another example, I have a friend who works in HR, and he told me that he uses Generative AI to write his job descriptions and then goes in and edits them afterword, making the process of posting jobs much faster.
+- As another example, I have a friend who works in HR, and he told me that he uses Generative AI to write his job descriptions and then goes in and edits them afterword, making the process of posting jobs much faster.
 
-In other words, for most of us Generative AI will augment our intelligence, not replace it.  The only distinguishing characteristic will be those who embrace Generative AI and those who choose not to, and the latter will be less productive than the former.
+- In other words, for I think for most of us Generative AI will augment our intelligence, not replace it.  The only distinguishing characteristic will be those who embrace Generative AI and those who choose not to, and the latter will be less productive than the former.
 -->
 
 # Example:  Dog Breed Classifier I
@@ -216,7 +217,7 @@ knitr::include_graphics("./images/ein_original.jpeg")
 ```
 
 <!--
-This is my own Corgie named Ein dressed up as Sherlock Holmes!
+This is my own Pembroke Welsh Corgie named Ein, dressed up as Sherlock Holmes!
 -->
 
 # Example:  Dog Breed Classifier II
@@ -274,9 +275,9 @@ image.save("./images/sherlock_corgie.png”)
 ```
 
 <!-- 
-If I take out the extra line breaks, this is six lines of code!
+- If I take out the extra line breaks, this is six lines of code!
 
-I did this on a macbook air without any fancy hardware, from a model and code I dounloaded from the internet.  All I needed was about 8 hours.
+- I did this on a MacBook Air without any fancy hardware, from a model and code I downloaded from the internet.  All I needed was about 8 hours for it to run.
 -->
 
 # Example:  AI Image Generation II
@@ -303,7 +304,7 @@ knitr::include_graphics("./images/automaticDoor.png")
 <!-- 
 Is this AI?  A Coupon dispenser at a pharmacy
 
-Likely yes!  It depends if its personalized to your shopping habits then yes a model is scoring your likelihood to use certain coupons based on past shopping habits.  If it sends the same coupon to everyone based on day then no.
+Likely yes!  It depends if it's personalized to your shopping habits, then yes a model is scoring your likelihood to use certain coupons based on past shopping habits.  If it sends the same coupon to everyone based on day then no.
 -->
 
 ```{r coupons, echo = FALSE, out.height = "80%", out.width = "80%", fig.align = "left"}
@@ -340,7 +341,7 @@ knitr::include_graphics("./images/translate.png")
 <!-- 
 Is this AI?  Language translation software.
 
-Before 2016 google translate was not built on trained data, it was built on a massive set of rules defined by humans (Symbolic AI).  There were huge advances in this technology and trained AI algorithms replaced the rules in 2016 even though the interface itself did not change.
+Before 2016 Google translate was not built on trained data, it was built on a massive set of rules defined by humans (Symbolic AI).
 -->
 
 ```{r translate2016, echo = FALSE, out.height = "80%", out.width = "100%", fig.align = "right"}
@@ -373,9 +374,9 @@ knitr::include_graphics("./images/spellcheck.png")
 # Example:  AI or Not AI : Voice Activated Personal Home Assistants
 
 <!-- 
-Is this AI?  Personal home assistants (google home, Sire, Alexa etc.)
+Is this AI?  Personal home assistants (Google Home, Siri, Alexa etc.)
 
-Yes this is known AI and it also has faded into the background as a usage we accept in our daily lives.
+Yes this is example of AI usage that has faded into the background as we accept it in our daily lives.
 -->
 
 ```{r dot, echo = FALSE, out.height = "80%", out.width = "100%", fig.align = "left"}
@@ -385,12 +386,8 @@ knitr::include_graphics("./images/echodot.png")
 # Where do I find AI?
 
 - Hugging Face (https://huggingface.co) is a large machine learning community with many data sets and publicly available AI models.
-- kaggle (https://www.kaggle.com) is famous for it's competitions but also provides data and publicly available AI models.
+- kaggle (https://www.kaggle.com) is famous for it's competitions, but also provides data and publicly available AI models.
 - TensorFlow Hub (https://www.tensorflow.org/hub) and PyTorch Hub (https://pytorch.org/hub/) both provide many pre-trained AI models that take advantage of their well established Python Machine Learning APIs.
 - You can buy it!
-
-<!-- 
-Economies of scale mean that it might be cheaper to buy an AI than build it yourself.
--->
 
 # References {.allowframebreaks}
