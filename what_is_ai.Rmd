@@ -1,15 +1,15 @@
 ---
 title: "What is AI?"
-author: Wade Copeland and Emily Chapman-McQuiston
-date: "`r format(as.POSIXlt(Sys.time(), tz = 'America/New_York'), '%d %B, %Y')`"
-output: 
-    beamer_presentation:
-        theme: "Malmoe"
-        colortheme: "default"
-        slide_level: 1
-        toc: false
-        includes:
-            in_header: header.tex
+author: "Wade Copeland and Emily Chapman-McQuiston"
+date: last-modified
+date-format: "MMMM DD, YYYY"
+format:
+  beamer:
+    theme: "Malmoe"
+    colortheme: "default"
+    slide-level: 1
+    include-in-header:
+      - header.tex
 bibliography: ./references.bib
 csl: ./csl/apa-numeric-superscript-brackets.csl
 ---
@@ -55,7 +55,7 @@ The Google definition calls AI a science while the IBM definition refers to it a
 
 # AI According to AI
 
-- ChatGPT:  Artificial Intelligence refers to the simulation of human intelligence in machines that are programmed to think, learn, and problem-solve like a human @chatgpt. 
+- ChatGPT:  Artificial Intelligence refers to the simulation of human intelligence in machines that are programmed to think, learn, and problem-solve like a human @chatgpt.
 
 - Copilot:  Artificial Intelligence refers to technology that enables computers and machines to simulate human intelligence and problem-solving capabilities @copilot.
 
