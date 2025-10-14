@@ -1,4 +1,4 @@
-pyenv
+.venv
 .DS_store
 .Rhistory
 .vscode

@@ -1,6 +1,6 @@
 ---
 title: "What is AI?"
-author: "Wade Copeland and Emily Chapman-McQuiston"
+author: "Wade K. Copeland and Emily Chapman-McQuiston"
 date: last-modified
 date-format: "MMMM DD, YYYY"
 output-file: what_is_ai.pdf
@@ -18,6 +18,8 @@ csl: ./csl/apa-numeric-superscript-brackets.csl
 # Defintions of AI Word Cloud
 
 <!--
+This presentation was compiled using Python 3.12.12.
+
 - Beamer in R markdown:  https://bookdown.org/yihui/rmarkdown/beamer-presentation.html
 - Beamer Theme Matrix:  https://mpetroff.net/files/beamer-theme-matrix/
 -->
