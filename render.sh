@@ -1,1 +1,1 @@
-quarto render what_is_ai.qmd
+quarto render what_is_ai.qmd --no-cache
